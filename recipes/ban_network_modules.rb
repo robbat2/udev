@@ -7,7 +7,9 @@ node['udev']['banned_modules'].each do |mdl|
 		content "blacklist #{mdl}"
 		notifies :run, "execute[update-initramfs -u]"
 	end
-	execute "rmmod #{mdl}"
+	execute "rmmod #{mdl}" do
+		returns [0,1]
+	end
 end
 
 execute "update-initramfs -u" do
