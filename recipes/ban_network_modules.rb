@@ -9,9 +9,15 @@ node['udev']['banned_modules'].each do |mdl|
 	end
 	execute "rmmod #{mdl}" do
 		returns [0,1]
+		notifies :reload, "ohai[reload_network]", :immediately
 	end
 end
 
 execute "update-initramfs -u" do
 	action :nothing
+end
+
+ohai "reload_network" do
+	  action :nothing
+	  plugin "network"
 end
