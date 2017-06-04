@@ -29,7 +29,7 @@ You may set attributes for udev configuration via a role or with a `udev` data b
 name "udev"
 description "Configure udev"
 run_list(
-  "recipe[udev::net]"
+  "recipe[udev]"
   )
 default_attributes(
   "udev" => {
@@ -60,6 +60,14 @@ Here is an example of the crushinator.json, the `id` is the `node.hostname`.
         "eth1": "00:0c:29:49:84:29"
     }
 }
+```
+
+```ruby
+name "udev"
+description "Configure udev"
+run_list(
+  "recipe[udev::databag]"
+  )
 ```
 
 Usage
