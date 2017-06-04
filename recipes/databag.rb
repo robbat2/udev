@@ -18,7 +18,8 @@
 #
 
 if Chef::Config[:solo]
-  Chef::Log.warn("This recipe attempts to use search with data bags. Chef Solo does not support this.")
+  Chef::Log.warn('This recipe attempts to use search with data bags.'\
+         'Chef Solo does not support this.')
 else
   begin
     udev_net = data_bag_item('udev', node.hostname)
@@ -28,4 +29,4 @@ else
   end
 end
 
-include_recipe "udev"
+include_recipe 'udev'

@@ -17,9 +17,9 @@
 # limitations under the License.
 #
 
-template "/etc/udev/rules.d/70-persistent-net.rules" do
-  source "70-persistent-net.rules.erb"
-  mode "0644"
-  owner "root"
-  group "root"
+template '/etc/udev/rules.d/70-persistent-net.rules' do
+  source '70-persistent-net.rules.erb'
+  mode '0644'
+  owner 'root'
+  group 'root'
 end
