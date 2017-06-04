@@ -5,9 +5,20 @@ Manages changing settings for udev configuration. Currently only only supports c
 Recipes
 =======
 
+
+ban_network_modules
+---
+Creates /etc/modprobe.d/<MODULE>-blacklist for each module in ['udev']['banned_modules'], unloads and regenerates initramfs afterwards
+
+rename_interfaces
+---
+Adds all existing interfaces to ['udev']['net'], naming them ethXX. Good for cases when your interface is named like p1p1, p1p2 etc..
+This recipe is mean to be run before 'net'. 
+
 net
 ---
 Populates the `/etc/udev/rules.d/70-persistent-net.rules` with the `['udev']['net']` hash, with keys of ethernet devices (ie. 'eth0') and values of mac addresses. It attempts to read a `udev` data bag if it exists.
+
 
 udev Role
 =========

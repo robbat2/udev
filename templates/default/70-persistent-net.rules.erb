@@ -4,6 +4,6 @@
 # This file is managed by Chef
 
 <% node['udev']['net'].each do |eth,mac| -%>
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="<%= mac %>", ATTR{type}=="1", KERNEL=="eth*", NAME="<%= eth %>"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="<%= mac.downcase %>", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="*", NAME="<%= eth %>"
 
 <% end -%>
